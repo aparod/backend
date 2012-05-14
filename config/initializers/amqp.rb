@@ -14,7 +14,7 @@ EventMachine.next_tick do
           :error => false,
           :data  => {
             :return_value => instance.send(data[:method_name], *data[:method_args]),
-            :object_state => instance.attributes
+            :object_state => instance.to_hash
           }
         }
       else
