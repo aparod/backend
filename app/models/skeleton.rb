@@ -26,7 +26,7 @@ module Skeleton
   end
 
   def to_hash
-    attributes
+    {self.class.name.underscore.to_sym => attributes}
   end
 
   def remote
