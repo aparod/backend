@@ -32,10 +32,6 @@ EventMachine.next_tick do
       }
     end
 
-    puts "---"
-    puts "Received: #{data.to_s}"
-    puts "Sending: #{ret.to_s}"
-
     channel.default_exchange.publish(
       ret.to_json,
       :routing_key    => metadata.reply_to,
@@ -45,5 +41,9 @@ EventMachine.next_tick do
     )
 
     metadata.ack
+
+    puts "---\n\n"
+    puts "Received:\n#{data.to_s}\n\n"
+    puts "Sent:\n#{ret.to_json.to_s}\n\n"
   end
 end
